@@ -1,0 +1,13 @@
+.maxwidth {
+    max-width:760px;
+}
+
+.headerimgvw {
+    width: 50vw;
+    max-width: 346px;
+}
+
+.footerimgvw {
+    width: 33vw;
+    max-width: 173px;
+}

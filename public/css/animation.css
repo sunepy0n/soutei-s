@@ -1,0 +1,50 @@
+/* 点滅 */
+.blink {
+	-webkit-animation: blink 1s ease-in-out 5 alternate;
+	animation: blink 1s ease-in-out 5 alternate;
+}
+@-webkit-keyframes blink {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes blink {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+.fadeup-box.fadeup.is-animated {
+  animation: fadeup 1.5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+}
+ 
+@keyframes fadeup {
+  0% {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*resultページ*/
+
+p.typingText{
+  letter-spacing: .1em;
+  color: #35a7ff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,.5);
+  animation: typing .5s steps(10),
+    blink .5s steps(1) infinite alternate;
+}
+
+@keyframes typing{
+  0% {width: 0;}
+}
+@keyframes blink{
+  50% {border-right-color: transparent;}
+}
