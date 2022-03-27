@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Shops;
+use App\Shop;
 
 class ShopsTableSeeder extends Seeder
 {
