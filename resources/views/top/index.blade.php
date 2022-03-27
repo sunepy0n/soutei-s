@@ -1,33 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>そうていたんさく</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/sticky-footer.css">
-    <link rel="stylesheet" href="css/textoption.css">
-    <link rel="stylesheet" href="css/animation.css">
-    <link rel="stylesheet" href="css/colorOption.css">
-    <link rel="stylesheet" href="css/viewOption.css">
-    <style>
+@extends('layouts.app')
 
-    </style>
-</head>
-<body>
-    <!--　ヘッダー　-->
-    <nav class="navbar navbar-light gradation-yp">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#" class="d-inline-block">
-                <img src="img/title-w.png" alt="" class="d-inline-block align-top headerimgvw">
-            </a>
-        </div>
-    </nav>
+@section('content')
 
-
-    <!--　メイン　-->
-    <div class="container maxwidth">
         <!--　キャッチコピー・対応印刷所　-->
         <div class="my-5">
             <!--　キャッチコピー　-->
@@ -222,25 +196,11 @@
 
 
         <div class="d-grid gap-2 col-6 mx-auto my-5 fadeup-box fadeup is-animated">
-            <a href="result.html" type="button" class="btn" style="background-color: #35a7ff; color:#fff;">検索</button></a>
+            <a href="/results" type="button" class="btn" style="background-color:#35a7ff; color:#fff;">検索</button></a>
         </div>
-
-    </div>
 
     <div>
         <!--absoluteでmargin死んでる？確認-->　
     </div>
 
-    <!--　フッター　-->
-    <div class="footer py-3 gradation-yp">
-        <a href="#">
-            <img src="img/title-w.png" alt="" class="pe-3 d-inline-block float-end footerimgvw">　
-        </a>
-    </div>
-
-
-    <script src="js/bootstrap.js">
-
-    </script>
-</body>
-</html>
+@endsection

@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'TopController@index');
+
+Route::get('results', 'ResultController@index');

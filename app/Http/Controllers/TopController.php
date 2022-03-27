@@ -10,6 +10,6 @@ class TopController extends Controller
     {
         $shops = ['あかつき印刷', 'Onebooks'];
         
-        return view('welcome', compact('shops')); 
+        return view('top.index', compact('shops')); 
     }
 }
