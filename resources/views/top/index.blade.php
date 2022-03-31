@@ -16,6 +16,7 @@
                     <img src="img/main.png" width="200" height="200" alt="...">
                 </div>
             </div>
+            {{$shopAkatsuki}}
             <!--　対応印刷所　アコーディオン　-->
             <div class="d-flex justify-content-center">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -31,7 +32,7 @@
                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 @foreach($shops as $shop)
-                                <a href="#" class="d-inline-block">{{$shop}}</a>
+                                <a href="{{$shop->url}}" class="d-inline-block" target="_blank" rel="noopener noreferrer">{{$shop->name}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -57,56 +58,27 @@
                     <!--　表紙セレクタ　-->
                     <div class="my-2">
                         <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck1">標準コート紙</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck2">特殊紙</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck3">カバー付き</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck4">変形断裁</label>
-                        </div>
-
-                        <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck5">あいうえ</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck6">かきくけ</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck7">さしすせ</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck8">たちつて</label>
-                        </div>
-
-                        <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck9">なにぬね</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck10" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck10">はひふへ</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck11">まみむめ</label>
-
-                            <input type="checkbox" class="btn-check" id="btncheck12" autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btncheck12">やゆよよ</label>
-                        </div>
-
-                        <select class="form-select my-2" aria-label="Default select example">
-                            <option selected>PP加工</option>
-                            <option value="1">クリア</option>
-                            <option value="2">マット</option>
-                            <option value="3">ホログラム</option>
-                            <option value="4">ベルベット</option>
-                            <option value="5">その他(特殊模様)</option>
-                        </select>
+                        @foreach($options as $option)
+                                <input type="checkbox" class="btn-check" id="{{$option->id}}" autocomplete="off">
+                                <label class="btn btn-outline-dark" for="{{$option->id}}">{{$option->name}}</label>
+                            @if($option->id % 4 === 0)
+                                </div>
+                            @endif
+                            @if($option->id % 4 === 0)
+                               <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
+                            @endif
+                         @endforeach        
                     </div>
+                           
+                    <!--    <select class="form-select my-2" aria-label="Default select example">-->
+                    <!--        <option selected>PP加工</option>-->
+                    <!--        <option value="1">クリア</option>-->
+                    <!--        <option value="2">マット</option>-->
+                    <!--        <option value="3">ホログラム</option>-->
+                    <!--        <option value="4">ベルベット</option>-->
+                    <!--        <option value="5">その他(特殊模様)</option>-->
+                    <!--    </select>-->
+                    <!--</div>-->
                     <!--表紙ここまで-->
 
                     <!--　本文ヘッダー　-->
