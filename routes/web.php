@@ -13,4 +13,4 @@
 
 Route::get('/', 'TopController@index');
 
-Route::get('results', 'ResultController@index');
+Route::post('results', 'ResultController@index');

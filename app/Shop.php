@@ -12,9 +12,14 @@ class Shop extends Model
         
     }
     
-    public function search()
-    {
-        return $this->where('name', 'あかつき印刷')->get();
+    public function search($ids)
+    { 
+        
+        //$ids->optionのtimestampをarray_popで省いた$request
+        $test = Shop::join('shop_option', 'shops.id', '=', 'shop_option.shop_id')->select()->whereIn('shops.id', $ids)->groupBy('shops.id')->get();
+        
+        return $test;
+        
     }
     
 }

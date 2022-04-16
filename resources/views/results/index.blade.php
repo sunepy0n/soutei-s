@@ -19,12 +19,20 @@
                         <span class="navbar-brand mb-0 h1">表紙の仕様</span>
                     </div>
                 </nav>
+                
+                @foreach($filteredShop as $filter)
+                                {{$filter->option_id}}
+                                @endforeach
                 <!--　表紙仕様　-->
                 <div class="d-flex flex-column flex-md-row align-items-center mb-2">
                     <div class="me-3">
                         <img src="img/result1.png" width="200" height="200" alt="...">
                     </div>
                     <div>
+                        <!--@if()-->
+                        <!--    @foreach-->
+                        <!--    @endforeach-->
+                        <!--@endif-->
                         <p>・結果１</p>
                         <p>・結果２</p>
                         <p>・結果３</p>
