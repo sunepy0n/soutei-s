@@ -55,7 +55,7 @@
                         <img src="img/result2.png" width="200" height="200" alt="...">
                     </div>
                     <div>
-                        @if($reqCovers != null)
+                        @if($reqBodys != null)
                             @foreach($reqBodys as $reqBody)
                             <p>・{{$reqBody}}</p>
                             @endforeach
