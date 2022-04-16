@@ -11,27 +11,25 @@ class ResultController extends Controller
     public function index(Request $request)
     {
         $value = $request->all();
+        $reqCovers = $request->cover;
+        $reqBodys = $request->body;
+        $reqSpecials = $request->special;
+        
         // dd($request);
         $ids = array_values( $value );
         array_pop($ids);
         // dd($ids);
         
         $shop = new Shop;
-        $filteredShop = $shop->search($ids);
+        // $filteredShop = $shop->search($ids);
         // dd($filteredShop);
         
-        $option = new Option;
-        $covers = $option->cover();
-        $bodys = $option->body();
-        $specials = $option->special();
         
-        $reqCovers = array_keys($value);
-        
-        // dd($reqCovers);
+        // dd($value, $reqCovers, $reqBodys, $reqSpecials, $ids);
         
         // dd($request, $ids, $filteredShop);
         
-        return view('results.index', compact('filteredShop','covers','bodys','specials')); 
+        return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'filteredShop')); 
         
         
         

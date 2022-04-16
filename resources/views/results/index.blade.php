@@ -20,24 +20,19 @@
                     </div>
                 </nav>
                 
-                @foreach($filteredShop as $filter)
-                                {{$filter->option_id}}
-                                @endforeach
                 <!--　表紙仕様　-->
                 <div class="d-flex flex-column flex-md-row align-items-center mb-2">
                     <div class="me-3">
                         <img src="img/result1.png" width="200" height="200" alt="...">
                     </div>
                     <div>
-                        <!--@if()-->
-                        <!--    @foreach-->
-                        <!--    @endforeach-->
-                        <!--@endif-->
-                        <p>・結果１</p>
-                        <p>・結果２</p>
-                        <p>・結果３</p>
-                        <p>・結果４</p>
-                        <p>・結果５</p>
+                        @if($reqCovers != null)
+                            @foreach($reqCovers as $reqCover)
+                            <p>・{{$reqCover}}</p>
+                            @endforeach
+                            @else
+                            <p>選択なし</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -60,11 +55,13 @@
                         <img src="img/result2.png" width="200" height="200" alt="...">
                     </div>
                     <div>
-                        <p>・結果１</p>
-                        <p>・結果２</p>
-                        <p>・結果３</p>
-                        <p>・結果４</p>
-                        <p>・結果５</p>
+                        @if($reqCovers != null)
+                            @foreach($reqBodys as $reqBody)
+                            <p>・{{$reqBody}}</p>
+                            @endforeach
+                            @else
+                            <p>選択なし</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -84,8 +81,13 @@
                 <!--　その他仕様　-->
                 <div class="d-flex flex-column flex-md-row align-items-center mb-2">
                     <div class="ms-4">
-                        <span class="d-inline-block">・結果１</span>
-                        <span class="d-inline-block">・結果２</span>
+                        @if($reqSpecials != null)
+                            @foreach($reqSpecials as $reqSpecial)
+                            <span class ="d-inline-block">{{$reqSpecial}}</span>
+                            @endforeach
+                            @else
+                            <p>選択なし</p>
+                        @endif
                     </div>
                 </div>
             </div>
