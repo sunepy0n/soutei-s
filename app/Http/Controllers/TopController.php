@@ -24,7 +24,7 @@ class TopController extends Controller
         $bodys = $option->body();
         $specials = $option->special();
         
-        
+        // dd($options, $covers);
         // $checkbox_array = [];
         // foreach ($request->input('checkbox') as $value){
         //     $checkbox_array[] = $value;

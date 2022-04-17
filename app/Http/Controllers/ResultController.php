@@ -11,25 +11,54 @@ class ResultController extends Controller
     public function index(Request $request)
     {
         $value = $request->all();
+
+        
         $reqCovers = $request->cover;
         $reqBodys = $request->body;
         $reqSpecials = $request->special;
         
-        // dd($request);
-        $ids = array_values( $value );
-        array_pop($ids);
-        // dd($ids);
+        if(isset($reqCovers)){
+            $req1 = array_keys($reqCovers);
+            }else{
+                $req1= [];
+            }
+        
+        if(isset($reqBodys)){
+             $req2 = array_keys($reqBodys);
+            }else{
+                $req2= [];
+            }
+        
+        if(isset($reqSpecials)){
+          $req3 = array_keys($reqSpecials);
+            }else{
+                $req3= [];
+            }
+        
+        //option.id
+        $ids = array_merge($req1, $req2, $req3);
         
         $shop = new Shop;
-        // $filteredShop = $shop->search($ids);
-        // dd($filteredShop);
+        $search = $shop->search($ids);
+        $filShops = $shop->filteredShop($ids);
+        
+        //idsで絞り込んでから必要なとこだけテーブルjoinできない？
+        $options = Option::all();
+        $options = $options->intersect(Option::whereIn('options.id', $ids)->get());
         
         
-        // dd($value, $reqCovers, $reqBodys, $reqSpecials, $ids);
         
-        // dd($request, $ids, $filteredShop);
+        // $options = Option::all();
+        // $options = $options->intersect(Option::whereIn('options.id', $ids)->get());
         
-        return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'filteredShop')); 
+        // $shopNames = $filteredShop->name;
+        
+        
+        dd($request, $value, $reqCovers, $reqBodys, $reqSpecials, $ids, $search, $filShops, $options);
+        
+        
+        
+        return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'search','filShops')); 
         
         
         

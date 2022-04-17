@@ -107,8 +107,13 @@
                 <!--　結果印刷所リンク　-->
                 <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2">
                     <div class="ms-4">
-                        <a href="#" class="d-block">・結果１</a>
-                        <a href="#" class="d-block">・結果２</a>
+                        @if($filShops != null)
+                            @foreach($filShops as $filShop)
+                            <a href="{{$filShop->url}}">・{{$filShop->name}}</a>
+                            @endforeach
+                            @else
+                            <p>見つかりませんでした…</p>
+                        @endif
                     </div>
                 </div>
             </div>

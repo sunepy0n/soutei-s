@@ -61,7 +61,7 @@
                     <div class="my-2">
                         <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
                         @foreach($covers as $cover)
-                                <input type="checkbox" class="btn-check" id="{{$cover->id}}" name="cover[]" value="{{$cover->name}}" autocomplete="off">
+                                <input type="checkbox" class="btn-check" id="{{$cover->id}}" name="cover[{{$cover->id}}]" value="{{$cover->name}}" autocomplete="off">
                                 <label class="btn btn-outline-dark" for="{{$cover->id}}">{{$cover->name}}</label>
                             <!--@if($cover->id % 4 === 0)-->
                             <!--    </div>-->
@@ -81,7 +81,7 @@
                          
                          <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
                         @foreach($bodys as $body)
-                                <input type="checkbox" class="btn-check" id="{{$body->id}}" name="body[]" value="{{$body->name}}" autocomplete="off">
+                                <input type="checkbox" class="btn-check" id="{{$body->id}}" name="body[{{$body->id}}]" value="{{$body->name}}" autocomplete="off">
                                 <label class="btn btn-outline-dark" for="{{$body->id}}">{{$body->name}}</label>
                             <!--@if($body->id % 4 === 0)-->
                             <!--    </div>-->
@@ -101,7 +101,7 @@
                          
                          <div class="btn-group mb-2 d-flex" role="group" aria-label="Basic checkbox toggle button group">
                         @foreach($specials as $special)
-                                <input type="checkbox" class="btn-check" id="{{$special->id}}" name="special[]" value="{{$special->name}}" autocomplete="off">
+                                <input type="checkbox" class="btn-check" id="{{$special->id}}" name="special[{{$special->id}}]" value="{{$special->name}}" autocomplete="off">
                                 <label class="btn btn-outline-dark" for="{{$special->id}}">{{$special->name}}</label>
                             <!--@if($special->id % 4 === 0)-->
                             <!--    </div>-->
