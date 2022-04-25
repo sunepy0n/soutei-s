@@ -107,9 +107,9 @@
                 <!--　結果印刷所リンク　-->
                 <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2">
                     <div class="ms-4">
-                        @if($filShops != null)
-                            @foreach($filShops as $filShop)
-                            <a href="{{$filShop->url}}">・{{$filShop->name}}</a>
+                        @if($results != null)
+                            @foreach($results as $result)
+                            <a href="{{$result->url}}">・{{$result->name}}</a>
                             @endforeach
                             @else
                             <p>見つかりませんでした…</p>
@@ -150,8 +150,35 @@
             </div>
             <!--結果コピペ用-->
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                    style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+                    計画中の装丁は……
+                    @if($reqCovers != null)
+                        表紙：
+                        @foreach($reqCovers as $reqCover)
+                        {{$reqCover}}、
+                        @endforeach
+                    @endif
+                    @if($reqBodys != null)
+                        本文：
+                        @foreach($reqBodys as $reqBody)
+                        {{$reqBody}}、
+                        @endforeach
+                    @endif
+                    @if($reqSpecials != null)
+                        その他：
+                        @foreach($reqSpecials as $reqSpecial)
+                        {{$reqSpecial}}、
+                        @endforeach
+                    @endif
+                    対応している印刷所は
+                    @if($results != null)
+                            @foreach($results as $result)
+                            {{$result->name}}
+                            @endforeach
+                    @endif
+                    です
+                    
+                </textarea>
                 <label for="floatingTextarea2">結果を表示　コピペ用</label>
             </div>
         </div>

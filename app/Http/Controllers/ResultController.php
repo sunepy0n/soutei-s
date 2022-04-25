@@ -12,7 +12,6 @@ class ResultController extends Controller
     {
         $value = $request->all();
 
-        
         $reqCovers = $request->cover;
         $reqBodys = $request->body;
         $reqSpecials = $request->special;
@@ -39,29 +38,36 @@ class ResultController extends Controller
         $ids = array_merge($req1, $req2, $req3);
         
         $shop = new Shop;
-        $search = $shop->search($ids);
-        $filShops = $shop->filteredShop($ids);
+        $shopListWithOptions = $shop->shopsWithOptions();
         
-        //idsで絞り込んでから必要なとこだけテーブルjoinできない？
-        $options = Option::all();
-        $options = $options->intersect(Option::whereIn('options.id', $ids)->get());
+        $results = [];
         
-        
-        
-        // $options = Option::all();
-        // $options = $options->intersect(Option::whereIn('options.id', $ids)->get());
-        
-        // $shopNames = $filteredShop->name;
-        
-        
-        dd($request, $value, $reqCovers, $reqBodys, $reqSpecials, $ids, $search, $filShops, $options);
-        
-        
-        
-        return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'search','filShops')); 
-        
-        
-        
+        //あかつき印刷からOnebooksまで繰り返し、withされているオプションテーブルを洗いだし、$optionIdsに格納、
+        //選択したオプションのidsをひとつずつ↑と照合、無かった場合は何もしない、あった場合は$resultに$shopListを格納
+        $shopListWithOptions->each(function($shopList)use(&$ids, &$results) {
+            $options = $shopList->options;
+            $optionIds = [];
+           
+            $options->each(function($option)use(&$optionIds, &$results) {
+                $option->id;
+                array_push($optionIds,$option->id);
+            });
 
+            $check = true;
+            foreach ($ids as $id) {
+                if(!in_array($id, $optionIds)){
+                    $check = false;
+                }
+                };
+     
+            if($check == true){
+                array_push($results,$shopList);     
+            };
+        });
+        
+        // dd($request, $value, $reqCovers, $reqBodys, $reqSpecials, $ids, $results, $shopNames, $shopUrls);
+
+        return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'results')); 
+    
     }
 }

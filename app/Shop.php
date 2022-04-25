@@ -12,79 +12,14 @@ class Shop extends Model
         
     }
     
-    public function search($ids)
+        public function shopsWithOptions()
     { 
         
-        // $ids->optionのtokenをarray_popで省いた$request
-        // join('結合するテーブル名', '結合元テーブル名.結合するカラム名', '=', '結合先テーブル名.リンクするカラム名')
-        // $test = Shop::join('shop_option', 'shops.id', '=', 'shop_option.shop_id')->select()->whereIn('shops.id', $ids)->groupBy('shops.id')->get();
-
-        // if(isset($ids)){
-        //     foreach($ids as $id){
-        //         echo $id;
-        //     }
-        // }
-
-        $test = Shop::join('shop_option', 'shops.id', '=', 'shop_option.shop_id')
-                ->join('options', 'shop_option.option_id', '=', 'options.id')
-                ->whereIn('option_id', $ids)
-                ->select('shops.name', 'shops.url')
+        $shopsWithOptions = Shop::with('options')
                 ->get();
                 
-                
-                
-                
-                
-                
-                // ;
-                
-                // $cnt = count($ids) -1;
-                
-                // for ($i = 0; $i <= $cnt; $i++) {
-                //      $table = $table->where('option_id', '=', $ids[$i]);
-                //     }
-                
-                // $test = $table->get();
-                
-        // $test2 = $test->all();
-        // $test3 = $test->option_id;
-        // $testE = 'null';
-        
-        // if($ids == $test3){
-        //     return $test3;
-        // }else{
-        //     return $testE;
-        // }
-        
-        return $test;
+        return $shopsWithOptions;
         
     }
-    
-    
-        public function filteredShop($ids)
-    { 
-        
-
-
-        $test2 = Shop::join('shop_option', 'shops.id', '=', 'shop_option.shop_id')
-                ->join('options', 'shop_option.option_id', '=', 'options.id')
-                ->groupBy('shop_id')
-                ->select('shops.name', 'shops.url')
-                ->get();
-                
-        // $test2 = $test->all();
-        // $test3 = $test->option_id;
-        // $testE = 'null';
-        
-        // if($ids == $test3){
-        //     return $test3;
-        // }else{
-        //     return $testE;
-        // }
-        
-        return $test2;
-        
-    }
-    
     
 }
