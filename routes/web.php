@@ -16,3 +16,7 @@ Route::get('/', 'TopController@index');
 Route::post('results', 'ResultController@index');
 
 Route::post('/tweet', 'TweetController@index')->name('tweet');
+
+  if (env('APP_ENV') === 'production') {
+      URL::forceScheme('https');
+  }
