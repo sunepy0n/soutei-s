@@ -15,4 +15,4 @@ Route::get('/', 'TopController@index');
 
 Route::post('results', 'ResultController@index');
 
-Route::get('/tweet', 'TweetController@index');
+Route::post('/tweet', 'TweetController@index')->name('tweet');

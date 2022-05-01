@@ -124,69 +124,46 @@
         <div class="card w-75 mx-auto my-5" style="border: none;">
             <div class="d-flex mb-3 flex-column flex-row align-items-center">
                 <div class="fs-2 mb-2" style="color: #ff5964;">
-                    シェアして退路を断とう！
+                    <p>シェアして退路を断とう！</p>
                 </div>
             </div>
 
-            <div class="d-flex mb-3 flex-row justify-content-evenly">
+            <form method="POST" action="/tweet">
+                @csrf
+                <!--<div>-->
+                        <!-- LINE -->
+                <!--        <a href="https://social-plugins.line.me/lineit/share?url=">-->
+                <!--            <img src="img/ic-ln.png" width="50px" height="50px" alt="...">-->
+                <!--        </a>-->
+                <!--    </div>-->
+                <!--    <div>-->
+                        <!-- Facebook -->
+                <!--        <a href="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v12.0">-->
+                <!--            <img src="img/ic-fb.png" width="50px" height="50px" alt="...">-->
+                <!--        </a>-->
+                <!--    </div>-->
+                <!--</div>-->
+                
+                <!--結果コピペ用-->
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" name="text" id="floatingTextarea" style="height: 100px">計画中の装丁は…… @if($reqCovers != null)表紙： @foreach($reqCovers as $reqCover){{$reqCover}}、 @endforeach @endif @if($reqBodys != null)本文： @foreach($reqBodys as $reqBody){{$reqBody}}、 @endforeach @endif @if($reqSpecials != null)その他： @foreach($reqSpecials as $reqSpecial){{$reqSpecial}} @endforeach @endif対応している印刷所は @if($results != null) @foreach($results as $result){{$result->name}} @endforeach @endifです</textarea>
+                    <label for="floatingTextarea">結果を表示　コピペ用</label>
+                </div>
+                
                 <!-- twitter -->
-                <div>
-                    <a href="#">
+                <div class="d-flex mb-3 flex-row justify-content-center">
+                    <button type="submit" class="btn btn-link">
                         <img src="img/ic-tw.png" width="50px" height="50px" alt="...">
-                    </a>
+                    </button>
                 </div>
-                <div>
-                    <!-- LINE -->
-                    <a href="https://social-plugins.line.me/lineit/share?url=">
-                        <img src="img/ic-ln.png" width="50px" height="50px" alt="...">
-                    </a>
-                </div>
-                <div>
-                    <!-- Facebook -->
-                    <a href="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v12.0">
-                        <img src="img/ic-fb.png" width="50px" height="50px" alt="...">
-                    </a>
-                </div>
-            </div>
-            <!--結果コピペ用-->
-            <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
-                    計画中の装丁は……
-                    @if($reqCovers != null)
-                        表紙：
-                        @foreach($reqCovers as $reqCover)
-                        {{$reqCover}}、
-                        @endforeach
-                    @endif
-                    @if($reqBodys != null)
-                        本文：
-                        @foreach($reqBodys as $reqBody)
-                        {{$reqBody}}、
-                        @endforeach
-                    @endif
-                    @if($reqSpecials != null)
-                        その他：
-                        @foreach($reqSpecials as $reqSpecial)
-                        {{$reqSpecial}}、
-                        @endforeach
-                    @endif
-                    対応している印刷所は
-                    @if($results != null)
-                            @foreach($results as $result)
-                            {{$result->name}}
-                            @endforeach
-                    @endif
-                    です
-                    
-                </textarea>
-                <label for="floatingTextarea2">結果を表示　コピペ用</label>
-            </div>
+            </form>
+            
         </div>
         <!--　シェア用リンクここまで　-->
 
         <!--　もう1度探す　トップ画面(選択そのまま遷移　確認)　-->
         <div class="d-grid gap-2 col-6 mx-auto my-5 fadeup-box fadeup is-animated">
-            <a href="{{ url('/') }}" type="button" class="btn" style="background-color: #35a7ff; color:#fff;">もう一度さがす</button></a>
+            <a href="{{ url('/') }}" type="button" class="btn" style="background-color: #35a7ff; color:#fff;">もう一度さがす</a>
         </div>
     
     <div>

@@ -65,6 +65,12 @@ class ResultController extends Controller
             };
         });
         
+        // $str = <<<EOD
+        // aaa
+        
+        // EOD;
+        
+        
         // dd($request, $value, $reqCovers, $reqBodys, $reqSpecials, $ids, $results, $shopNames, $shopUrls);
 
         return view('results.index', compact('value', 'reqCovers', 'reqBodys', 'reqSpecials', 'results')); 
