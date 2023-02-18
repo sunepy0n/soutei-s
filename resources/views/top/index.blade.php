@@ -45,6 +45,7 @@
                     
 
             <form method="POST" action="/results">
+            @csrf
                 
             <!-- 表紙・本文　-->
             <div class="card w-75 mx-auto my-5 fadeup-box fadeup is-animated"
@@ -215,7 +216,6 @@
         <div class="d-grid gap-2 col-6 mx-auto my-5 fadeup-box fadeup is-animated">
             <button type="submit" class="btn" style="background-color:#35a7ff; color:#fff;">検索</button>
         </div>
-    @csrf
     </form>
     
     <div>
